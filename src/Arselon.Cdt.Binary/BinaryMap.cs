@@ -11,13 +11,10 @@ namespace Arselon.Cdt.Binary
 {
     public partial class BinaryMap
     {
+        #region Core
+
         List<BinaryChunk> _chunks;
-
         public IReadOnlyList<BinaryChunk> Chunks => _chunks;
-
-        public int Count => throw new NotImplementedException();
-
-        public BinaryChunk this[int index] => throw new NotImplementedException();
 
         public BinaryMap()
         {
@@ -100,6 +97,10 @@ namespace Arselon.Cdt.Binary
             _chunks.Add(new BinaryChunk(start, end, data, start - address));
         }
 
+        #endregion
+
+        #region IntelHex
+
         public void ImportIntelHex(TextReader textReader)
         {
             uint baseAddress = 0;
@@ -167,6 +168,10 @@ namespace Arselon.Cdt.Binary
             return binaryMap;
         }
 
+        #endregion
+
+        #region Memory Reading
+
         public byte[] Read(long address, int length)
         {
             var start = address;
@@ -215,5 +220,7 @@ namespace Arselon.Cdt.Binary
             var d = Read(address, 4);
             return BitConverter.ToUInt32(d, 0);
         }
+
+        #endregion
     }
 }

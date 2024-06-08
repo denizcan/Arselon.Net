@@ -7,10 +7,12 @@
     <Title>Import/export/manipulate IntelHex, MotorolaHex files.</Title>
     <Company>${Authors}</Company>
     <Authors>Deniz Can Cigsar</Authors>
-    <Description>A library to import/export/manipulate IntelHex, MotorolaHex files. 
-It may merge multiple hex files into memory, and enable developer to read range of addresses.
-		
-The library belongs to Arselon.Net that is a set of libraries.</Description>
+    <Description>A library to import/export/manipulate IntelHex, MotorolaHex files.
+It can merge multiple hex files into memory, and enable developer
+to read range of addresses.
+
+The library belongs to Arselon.Net that is a set of libraries.
+    </Description>
     <Copyright>GNU General Public License v3.0</Copyright>
     <PackageProjectUrl>https://github.com/denizcan/Arselon.Net</PackageProjectUrl>
     <PackageTags>IntelHex;MotorolaHex</PackageTags>
