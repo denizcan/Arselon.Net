@@ -1,4 +1,11 @@
-﻿### To read a Hex file simply do the following:
+﻿## Arselon.Cdt.Binary
+C/C++ development tools binary handling library.
+
+A library to import/export/manipulate IntelHex, MotorolaHex files. 
+It can merge multiple hex files into memory, and enable developer 
+to read range of addresses.
+
+### To read a Hex file simply do the following:
 
 ```
 var map = BinaryMap.ReadIntelHexFile("filename.hex");
