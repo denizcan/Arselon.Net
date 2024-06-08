@@ -18,6 +18,9 @@ The library belongs to Arselon.Net that is a set of libraries.
     <PackageTags>IntelHex;MotorolaHex</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>${AssemblyVersion}</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

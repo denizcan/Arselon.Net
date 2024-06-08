@@ -152,6 +152,12 @@ namespace Arselon.Cdt.Binary
             }
         }
 
+        public void ImportIntelHexString(string text)
+        {
+            using (var reader = new StringReader(text))
+                ImportIntelHex(reader);
+        }
+
         public void ImportIntelHexFile(string fileName)
         {
             using (var fileStream = File.OpenRead(fileName))
@@ -161,7 +167,14 @@ namespace Arselon.Cdt.Binary
             }
         }
 
-        public static BinaryMap ReadIntelHexFile(string fileName)
+        public static BinaryMap FromIntelHexString(string text)
+        {
+            var binaryMap = new BinaryMap();
+            binaryMap.ImportIntelHexString(text);
+            return binaryMap;
+        }
+
+        public static BinaryMap FromIntelHexFile(string fileName)
         {
             var binaryMap = new BinaryMap();
             binaryMap.ImportIntelHexFile(fileName);
