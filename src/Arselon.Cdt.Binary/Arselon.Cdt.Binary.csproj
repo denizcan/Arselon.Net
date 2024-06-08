@@ -4,6 +4,32 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Import/export/manipulate IntelHex, MotorolaHex files.</Title>
+    <Company>${Authors}</Company>
+    <Authors>Deniz Can Cigsar</Authors>
+    <Description>A library to import/export/manipulate IntelHex, MotorolaHex files. 
+It may merge multiple hex files into memory, and enable developer to read range of addresses.
+		
+The library belongs to Arselon.Net that is a set of libraries.</Description>
+    <Copyright>GNU General Public License v3.0</Copyright>
+    <PackageProjectUrl>https://github.com/denizcan/Arselon.Net</PackageProjectUrl>
+    <PackageTags>IntelHex;MotorolaHex</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
