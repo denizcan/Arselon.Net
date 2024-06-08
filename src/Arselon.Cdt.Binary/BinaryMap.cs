@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -12,6 +14,10 @@ namespace Arselon.Cdt.Binary
         List<BinaryChunk> _chunks;
 
         public IReadOnlyList<BinaryChunk> Chunks => _chunks;
+
+        public int Count => throw new NotImplementedException();
+
+        public BinaryChunk this[int index] => throw new NotImplementedException();
 
         public BinaryMap()
         {
@@ -159,6 +165,55 @@ namespace Arselon.Cdt.Binary
             var binaryMap = new BinaryMap();
             binaryMap.ImportIntelHexFile(fileName);
             return binaryMap;
+        }
+
+        public byte[] Read(long address, int length)
+        {
+            var start = address;
+            var end = start + length;
+            var result = new byte[length];
+            foreach (var c in _chunks)
+            {
+                if (c.Start >= end)
+                    break;
+
+                var s = Math.Max(start, c.Start);
+                var e = Math.Min(end, c.End);
+                var n = e - s;
+                if (n > 0)
+                    Array.Copy(c.Data, s - c.Start, result, s - start, n);
+            }
+            return result;
+        }
+
+        public byte ReadByte(long address)
+        {
+            var d = Read(address, 1);
+            return d[0];
+        }
+
+        public ushort ReadUint16(long address)
+        {
+            var d = Read(address, 2);
+            return BitConverter.ToUInt16(d, 0);
+        }
+
+        public short ReadInt16(long address)
+        {
+            var d = Read(address, 2);
+            return BitConverter.ToInt16(d, 0);
+        }
+
+        public int ReadInt32(long address)
+        {
+            var d = Read(address, 4);
+            return BitConverter.ToInt32(d, 0);
+        }
+
+        public uint ReadUint32(long address)
+        {
+            var d = Read(address, 4);
+            return BitConverter.ToUInt32(d, 0);
         }
     }
 }
