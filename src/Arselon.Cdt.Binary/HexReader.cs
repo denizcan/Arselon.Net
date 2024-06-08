@@ -54,6 +54,14 @@ namespace Arselon.Cdt.Binary
                     Read();
                 return;
             }
+
+            if (c == '\n')
+            {
+                if (Peek() == '\r')
+                    Read();
+                return;
+            }
+
             ThrowInvalidData();
         }
 
