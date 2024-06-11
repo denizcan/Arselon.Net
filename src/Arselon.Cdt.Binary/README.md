@@ -42,3 +42,10 @@ intersect, the latest import will override the intersection.
 
 You may read an array of bytes with map.Read(address, length). It will
 fill the regions that are not included in hex files to 0.
+
+### Exporting
+
+The following code will export binary map to IntelHex formated file:
+```
+map.ExportAsIntelHexToFile("IntelHexFile.hex");
+```

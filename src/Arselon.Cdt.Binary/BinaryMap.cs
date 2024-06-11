@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,7 +39,7 @@ namespace Arselon.Cdt.Binary
                 for (j = i + 1; j < _chunks.Count; j++)
                 {
                     var n = _chunks[j];
-                    if (last.End != n.Start)
+                    if (last.EndAddress != n.StartAddress)
                         break;
                     size += n.Size;
                     last = n;
@@ -52,7 +53,7 @@ namespace Arselon.Cdt.Binary
                     Array.Copy(n.Data, 0, data, index, n.Size);
                     index += n.Size;
                 }
-                chunks.Add(new BinaryChunk(first.Start, last.End, data));
+                chunks.Add(new BinaryChunk(first.StartAddress, last.EndAddress, data));
             }
 
             return new BinaryMap(chunks);
@@ -66,17 +67,17 @@ namespace Arselon.Cdt.Binary
             int count = _chunks.Count;
             int i;
             for (i = 0; i < count; i++)
-                if (start < _chunks[i].End)
+                if (start < _chunks[i].EndAddress)
                     break;
 
             for ( ; i < _chunks.Count; i++)
             {
                 var chunk = _chunks[i];
 
-                if (start < chunk.Start)
+                if (start < chunk.StartAddress)
                 {
                     // previous empty region
-                    var e = Math.Min(end, chunk.Start);
+                    var e = Math.Min(end, chunk.StartAddress);
                     _chunks.Insert(i, new BinaryChunk(start, e, data, start - address));
                     if (e == end)
                         return;
@@ -86,8 +87,8 @@ namespace Arselon.Cdt.Binary
 
                 // intersection region
                 {
-                    var e = Math.Min(end, chunk.End);
-                    Array.Copy(data, start - address, chunk.Data, start - chunk.Start, e - start);
+                    var e = Math.Min(end, chunk.EndAddress);
+                    Array.Copy(data, start - address, chunk.Data, start - chunk.StartAddress, e - start);
                     if (e == end)
                         return;
                     start = e;
@@ -111,6 +112,7 @@ namespace Arselon.Cdt.Binary
                 var linenumber = hexReader.LineNumber;
                 var columnNumber = hexReader.ColumnNumber;
 
+                //TODO Use List<byte> to read line
                 var byteCount = hexReader.ReadByte();
                 var address = hexReader.ReadUInt16();
                 var recordType = hexReader.ReadByte();
@@ -181,6 +183,23 @@ namespace Arselon.Cdt.Binary
             return binaryMap;
         }
 
+        public void ExportAsIntelHexTo(TextWriter writer)
+        {
+            var hexWriter = new IntelHexWriter(writer);
+            foreach (var chunk in _chunks)
+            {
+                hexWriter.SetAddress(chunk.StartAddress);
+                hexWriter.WriteData(chunk.Data);
+            }
+            hexWriter.Finalize();
+        }
+
+        public void ExportAsIntelHexToFile(string fileName)
+        {
+            using (var file = File.CreateText(fileName))
+                ExportAsIntelHexTo(new StreamWriter(file.BaseStream));
+        }
+
         #endregion
 
         #region Memory Reading
@@ -192,14 +211,14 @@ namespace Arselon.Cdt.Binary
             var result = new byte[length];
             foreach (var c in _chunks)
             {
-                if (c.Start >= end)
+                if (c.StartAddress >= end)
                     break;
 
-                var s = Math.Max(start, c.Start);
-                var e = Math.Min(end, c.End);
+                var s = Math.Max(start, c.StartAddress);
+                var e = Math.Min(end, c.EndAddress);
                 var n = e - s;
                 if (n > 0)
-                    Array.Copy(c.Data, s - c.Start, result, s - start, n);
+                    Array.Copy(c.Data, s - c.StartAddress, result, s - start, n);
             }
             return result;
         }
