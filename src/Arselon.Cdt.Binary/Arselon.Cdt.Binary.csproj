@@ -20,7 +20,7 @@ The library belongs to Arselon.Net that is a set of libraries.
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <AssemblyVersion>1.1.0.0</AssemblyVersion>
     <FileVersion>${AssemblyVersion}</FileVersion>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
