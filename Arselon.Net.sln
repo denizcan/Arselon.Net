@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntelHex-ReadWrite", "sampl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntelHex-CustomWrite", "samples\Binary\IntelHex-Writer\IntelHex-CustomWrite.csproj", "{2BEFC3A7-55DD-48FB-8376-1A5578BF999E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorolaHex-ReadWrite", "samples\Binary\MotorolaHex-ReadWrite\MotorolaHex-ReadWrite.csproj", "{D8D7FE49-9EBA-489C-90BE-2061A745A8E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arselon.Extensions", "src\Arselon.Extensions\Arselon.Extensions.csproj", "{69893724-5D0B-4207-9F50-4A7AA800B848}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,14 @@ Global
 		{2BEFC3A7-55DD-48FB-8376-1A5578BF999E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BEFC3A7-55DD-48FB-8376-1A5578BF999E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BEFC3A7-55DD-48FB-8376-1A5578BF999E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D7FE49-9EBA-489C-90BE-2061A745A8E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D7FE49-9EBA-489C-90BE-2061A745A8E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D7FE49-9EBA-489C-90BE-2061A745A8E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D7FE49-9EBA-489C-90BE-2061A745A8E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69893724-5D0B-4207-9F50-4A7AA800B848}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69893724-5D0B-4207-9F50-4A7AA800B848}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69893724-5D0B-4207-9F50-4A7AA800B848}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69893724-5D0B-4207-9F50-4A7AA800B848}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +51,7 @@ Global
 		{0ECDDE8C-C1B9-43E4-9082-614422CF9418} = {3DAD5895-1EF5-470A-9542-C6E784F61F5D}
 		{282BBD02-D4EB-4579-A948-5D9502FB2D8E} = {0ECDDE8C-C1B9-43E4-9082-614422CF9418}
 		{2BEFC3A7-55DD-48FB-8376-1A5578BF999E} = {0ECDDE8C-C1B9-43E4-9082-614422CF9418}
+		{D8D7FE49-9EBA-489C-90BE-2061A745A8E3} = {0ECDDE8C-C1B9-43E4-9082-614422CF9418}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9C43F8A-6C5A-475C-AB02-CEC264B4C5E2}

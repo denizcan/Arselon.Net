@@ -45,6 +45,16 @@ namespace Arselon.Cdt.Binary
             return ushort.Parse(v, NumberStyles.HexNumber);
         }
 
+        public byte[] ReadLine()
+        {
+            var line = _reader.ReadLine();
+            var n = line.Length / 2;
+            var data = new byte[n];
+            for (int i = 0; i < n; i++)
+                data[i] = byte.Parse(line.Substring(i * 2, 2), NumberStyles.HexNumber);
+            return data; 
+        }
+
         public void ReadEol()
         {
             var c = ReadChar();

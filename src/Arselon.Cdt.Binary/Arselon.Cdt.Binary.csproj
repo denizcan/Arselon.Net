@@ -31,6 +31,10 @@ The library belongs to Arselon.Net that is a set of libraries.
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Arselon.Extensions\Arselon.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="README.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

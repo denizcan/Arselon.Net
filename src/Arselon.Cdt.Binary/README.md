@@ -37,11 +37,11 @@ add a BinaryChunk in between [0x1000c200, 1000c210] addresses.
 
 The call to map.ImportIntelHexString will add a BinaryChunk in 
 between [0x00000000, 0x00000004] addresses. You may import as many
-hex documents as required. All will be combined. If there two adresses
+hex documents as required. All will be combined. If two adresses
 intersect, the latest import will override the intersection.
 
 You may read an array of bytes with map.Read(address, length). It will
-fill the regions that are not included in hex files to 0.
+fill the regions that are not included in hex files with 0.
 
 ### Exporting
 
