@@ -4,23 +4,23 @@
     {
         public struct BinaryChunk
         {
-            public uint Start { get; }
-            public uint End { get; }
+            public uint StartAddress { get; }
+            public uint EndAddress { get; }
             public uint Size { get; }
             public byte[] Data { get; }
 
-            public BinaryChunk(uint start, uint end, byte[] data)
+            public BinaryChunk(uint startAddress, uint endAddress, byte[] data)
             {
-                Start = start;
-                End = end;
-                Size = end - start;
+                StartAddress = startAddress;
+                EndAddress = endAddress;
+                Size = endAddress - startAddress;
                 Data = data;
             }
 
             public BinaryChunk(uint start, uint end, byte[] data, uint index)
             {
-                Start = start;
-                End = end;
+                StartAddress = start;
+                EndAddress = end;
                 Size = end - start;
                 Data = new byte[Size];
                 Array.Copy(data, index, Data, 0, Size);
