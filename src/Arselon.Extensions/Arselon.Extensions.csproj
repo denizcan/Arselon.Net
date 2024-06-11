@@ -4,6 +4,26 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>Miscellaneous extensions to string, byte array etc.</Title>
+    <Description>Converting array to Ascii string, hex string vs.</Description>
+    <Copyright>GNU General Public License v3.0</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <FileVersion>${AssemblyVersion}</FileVersion>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Link="LICENSE">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
